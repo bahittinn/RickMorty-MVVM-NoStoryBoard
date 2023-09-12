@@ -25,6 +25,7 @@
 		649921F22AAF4D960037C866 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649921F12AAF4D960037C866 /* Character.swift */; };
 		649921F52AAF4EDE0037C866 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649921F42AAF4EDE0037C866 /* NetworkManager.swift */; };
 		649921F72AAF501F0037C866 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649921F62AAF501F0037C866 /* Constants.swift */; };
+		649921F92AB0DB060037C866 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649921F82AB0DB060037C866 /* CharacterViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		649921F12AAF4D960037C866 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		649921F42AAF4EDE0037C866 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		649921F62AAF501F0037C866 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		649921F82AB0DB060037C866 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 		649921D72AAF37630037C866 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				649921F82AB0DB060037C866 /* CharacterViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				649921DE2AAF398C0037C866 /* EpisodeController.swift in Sources */,
 				649921F72AAF501F0037C866 /* Constants.swift in Sources */,
 				649921EA2AAF3E490037C866 /* CollectionView+Ext.swift in Sources */,
+				649921F92AB0DB060037C866 /* CharacterViewModel.swift in Sources */,
 				649921DC2AAF39690037C866 /* CharacterController.swift in Sources */,
 				649921F02AAF41240037C866 /* CharacterCell.swift in Sources */,
 				649921F22AAF4D960037C866 /* Character.swift in Sources */,

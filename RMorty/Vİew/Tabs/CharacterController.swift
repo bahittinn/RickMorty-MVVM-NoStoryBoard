@@ -7,11 +7,17 @@
 
 import UIKit
 
-class CharacterController: UIViewController {
+protocol CharacterControllerInterface: AnyObject {
+    func configureCollectionView()
+}
 
+final class CharacterController: UIViewController {
+    
     private var collectionView: UICollectionView!
     
     private var padding: CGFloat = 16
+    
+    var viewModel = CharacterViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +25,29 @@ class CharacterController: UIViewController {
         view.backgroundColor = .systemBackground
         configureCollectionView()
         
+        viewModel.view = self
+        viewModel.viewDidLoad()
+        
         NetworkManager.shared.download(url:  URL(string: "https://rickandmortyapi.com/api/character")!) { response in
             print(response)
         }
     }
     
+    
+}
+
+extension CharacterController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCell.reuseID, for: indexPath) as! CharacterCell
+        return cell
+    }
+}
+
+extension CharacterController: CharacterControllerInterface {
     func configureCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createFlowLayout())
         view.addSubview(collectionView)
@@ -35,16 +59,5 @@ class CharacterController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         
         collectionView.pintoEdgeCustom(view: view)
-    }
-}
-
-extension CharacterController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCell.reuseID, for: indexPath) as! CharacterCell
-        return cell
     }
 }
