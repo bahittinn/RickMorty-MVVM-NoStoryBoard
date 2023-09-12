@@ -27,6 +27,7 @@
 		649921F72AAF501F0037C866 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649921F62AAF501F0037C866 /* Constants.swift */; };
 		649921F92AB0DB060037C866 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649921F82AB0DB060037C866 /* CharacterViewModel.swift */; };
 		649921FC2AB0DDCC0037C866 /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649921FB2AB0DDCC0037C866 /* CharacterService.swift */; };
+		649921FE2AB0EB7F0037C866 /* characterImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649921FD2AB0EB7F0037C866 /* characterImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		649921F62AAF501F0037C866 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		649921F82AB0DB060037C866 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
 		649921FB2AB0DDCC0037C866 /* CharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterService.swift; sourceTree = "<group>"; };
+		649921FD2AB0EB7F0037C866 /* characterImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = characterImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				649921EF2AAF41240037C866 /* CharacterCell.swift */,
+				649921FD2AB0EB7F0037C866 /* characterImage.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				649921F72AAF501F0037C866 /* Constants.swift in Sources */,
 				649921EA2AAF3E490037C866 /* CollectionView+Ext.swift in Sources */,
 				649921F92AB0DB060037C866 /* CharacterViewModel.swift in Sources */,
+				649921FE2AB0EB7F0037C866 /* characterImage.swift in Sources */,
 				649921DC2AAF39690037C866 /* CharacterController.swift in Sources */,
 				649921F02AAF41240037C866 /* CharacterCell.swift in Sources */,
 				649921F22AAF4D960037C866 /* Character.swift in Sources */,

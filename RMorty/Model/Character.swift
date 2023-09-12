@@ -21,4 +21,6 @@ struct CharacterResult: Codable {
     let id: Int?
     let name: String?
     let image: String?
+    let status: String?
+    let species: String?
 }

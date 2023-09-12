@@ -38,4 +38,6 @@ final class CharacterService {
         print(error.localizedDescription)
     }
     
+    
+    
 }

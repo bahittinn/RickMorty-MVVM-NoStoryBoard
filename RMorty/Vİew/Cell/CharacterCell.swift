@@ -10,6 +10,8 @@ import UIKit
 final class CharacterCell: UICollectionViewCell {
     static let reuseID = "CharacterCell"
     
+    private var characterImageV: characterImage!
+    
     private let characterImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.backgroundColor = .lightGray
@@ -49,6 +51,13 @@ final class CharacterCell: UICollectionViewCell {
         configureSpeciesLabel()
     }
     
+    func setCell(character: CharacterResult) {
+        nameLabel.text = character.name
+        statusLabel.text = character.status
+        speciesLabel.text = character.species
+        characterImageV.downloadImage(character: character)
+    }
+    
     
     
     private func configureCell() {
@@ -62,14 +71,16 @@ final class CharacterCell: UICollectionViewCell {
     }
     
     func configureImageView() {
-        addSubview(characterImageView)
-        characterImageView.translatesAutoresizingMaskIntoConstraints = false
+        characterImageV = characterImage(frame: .zero)
+        addSubview(characterImageV)
+//        addSubview(characterImageView)
+//        characterImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            characterImageView.topAnchor.constraint(equalTo: topAnchor),
-            characterImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            characterImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            characterImageView.heightAnchor.constraint(equalToConstant: CGFloat.dWidth / 2)
+            characterImageV.topAnchor.constraint(equalTo: topAnchor),
+            characterImageV.leadingAnchor.constraint(equalTo: leadingAnchor),
+            characterImageV.trailingAnchor.constraint(equalTo: trailingAnchor),
+            characterImageV.heightAnchor.constraint(equalToConstant: CGFloat.dWidth / 2)
         ])
     }
     
@@ -78,7 +89,7 @@ final class CharacterCell: UICollectionViewCell {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: characterImageView.bottomAnchor,constant: 10),
+            nameLabel.topAnchor.constraint(equalTo: characterImageV.bottomAnchor,constant: 10),
             nameLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }

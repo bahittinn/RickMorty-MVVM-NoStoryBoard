@@ -44,7 +44,7 @@ extension CharacterController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCell.reuseID, for: indexPath) as! CharacterCell
-        
+        cell.setCell(character: viewModel.characters[indexPath.row])
         return cell
     }
 }
