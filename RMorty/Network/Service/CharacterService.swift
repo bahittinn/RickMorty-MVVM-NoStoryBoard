@@ -11,7 +11,7 @@ final class CharacterService {
     
     
     func downloadCharacters(page: Int,completion: @escaping ([CharacterResult]?) -> ()) {
-        NetworkManager.shared.download(url: APIURL) { [weak self] result in
+        NetworkManager.shared.download(url: URL(string: "\(APIURL)/?page=\(page)")!) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let data):

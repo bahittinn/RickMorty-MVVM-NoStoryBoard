@@ -113,4 +113,11 @@ final class CharacterCell: UICollectionViewCell {
             speciesLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        characterImageV.image = nil
+        characterImageV.cancelDownLoading()
+    }
 }

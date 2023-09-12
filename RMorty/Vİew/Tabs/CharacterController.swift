@@ -8,6 +8,7 @@
 import UIKit
 
 protocol CharacterControllerInterface: AnyObject {
+    func configureUI()
     func configureCollectionView()
     func reloadCollectionView()
 }
@@ -22,16 +23,9 @@ final class CharacterController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Characters"
-        view.backgroundColor = .systemBackground
-        configureCollectionView()
-        
+
         viewModel.view = self
         viewModel.viewDidLoad()
-        
-        NetworkManager.shared.download(url:  URL(string: "https://rickandmortyapi.com/api/character")!) { response in
-            print(response)
-        }
     }
     
     
@@ -47,9 +41,25 @@ extension CharacterController: UICollectionViewDelegate, UICollectionViewDataSou
         cell.setCell(character: viewModel.characters[indexPath.row])
         return cell
     }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        
+        if offsetY >= contentHeight - (2 * height) {
+            viewModel.fetchCharacters()
+        }
+    }
 }
 
 extension CharacterController: CharacterControllerInterface {
+    
+    func configureUI() {
+        title = "Characters"
+        view.backgroundColor = .systemBackground
+    }
+    
     func configureCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createFlowLayout())
         view.addSubview(collectionView)

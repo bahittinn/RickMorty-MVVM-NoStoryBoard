@@ -35,5 +35,10 @@ final class characterImage: UIImageView {
         dataTask?.resume()
     }
     
+    
+    func cancelDownLoading() {
+        dataTask?.cancel()
+        dataTask = nil
+    }
 }
 

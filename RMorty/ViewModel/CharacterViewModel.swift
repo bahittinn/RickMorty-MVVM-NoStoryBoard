@@ -14,6 +14,9 @@ protocol CharacterViewModelInterface {
 }
 
 final class CharacterViewModel {
+    
+    var page: Int = 1
+    
     weak var view: CharacterControllerInterface?
 
     var characters: [CharacterResult] = []
@@ -23,18 +26,20 @@ final class CharacterViewModel {
 
 extension CharacterViewModel: CharacterViewModelInterface {
     func viewDidLoad() {
+        view?.configureUI()
         view?.configureCollectionView()
         fetchCharacters()
     }
     
     func fetchCharacters() {
-        service.downloadCharacters(page: 1) { [weak self] returnedCharacters in
+        service.downloadCharacters(page: page) { [weak self] returnedCharacters in
             guard let self = self else { return }
             guard let returnedCharacters = returnedCharacters else { return}
             
             self.characters.append(contentsOf: returnedCharacters)
             
             self.view?.reloadCollectionView()
+            self.page += 1
         }
     }
 }
