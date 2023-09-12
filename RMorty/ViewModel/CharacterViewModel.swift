@@ -14,6 +14,9 @@ protocol CharacterViewModelInterface {
 
 struct CharacterViewModel {
     weak var view: CharacterControllerInterface?
+    
+    var movies: [CharacterResult] = []
+    
 }
 
 extension CharacterViewModel: CharacterViewModelInterface {

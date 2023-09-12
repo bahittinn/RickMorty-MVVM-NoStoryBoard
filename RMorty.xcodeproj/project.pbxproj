@@ -26,6 +26,7 @@
 		649921F52AAF4EDE0037C866 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649921F42AAF4EDE0037C866 /* NetworkManager.swift */; };
 		649921F72AAF501F0037C866 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649921F62AAF501F0037C866 /* Constants.swift */; };
 		649921F92AB0DB060037C866 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649921F82AB0DB060037C866 /* CharacterViewModel.swift */; };
+		649921FC2AB0DDCC0037C866 /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649921FB2AB0DDCC0037C866 /* CharacterService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		649921F42AAF4EDE0037C866 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		649921F62AAF501F0037C866 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		649921F82AB0DB060037C866 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
+		649921FB2AB0DDCC0037C866 /* CharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,8 +177,17 @@
 			isa = PBXGroup;
 			children = (
 				649921F42AAF4EDE0037C866 /* NetworkManager.swift */,
+				649921FA2AB0DDC40037C866 /* Service */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		649921FA2AB0DDC40037C866 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				649921FB2AB0DDCC0037C866 /* CharacterService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +275,7 @@
 				649921F22AAF4D960037C866 /* Character.swift in Sources */,
 				649921C32AAF37370037C866 /* SceneDelegate.swift in Sources */,
 				649921E82AAF3DCB0037C866 /* CGFloat+Ext.swift in Sources */,
+				649921FC2AB0DDCC0037C866 /* CharacterService.swift in Sources */,
 				649921E02AAF39930037C866 /* LocationController.swift in Sources */,
 				649921ED2AAF403E0037C866 /* UIHelper.swift in Sources */,
 			);
