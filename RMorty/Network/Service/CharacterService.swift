@@ -10,18 +10,16 @@ import Foundation
 final class CharacterService {
     
     
-    func downloadCharacters() {
-        
+    func downloadCharacters(page: Int,completion: @escaping ([CharacterResult]?) -> ()) {
         NetworkManager.shared.download(url: APIURL) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let data):
-                self.handleWithData(data)
+                completion(self.handleWithData(data))
             case .failure(let error):
                 self.handleWithError(error)
                 break
             }
-            
         }
     }
     

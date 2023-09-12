@@ -9,6 +9,7 @@ import UIKit
 
 protocol CharacterControllerInterface: AnyObject {
     func configureCollectionView()
+    func reloadCollectionView()
 }
 
 final class CharacterController: UIViewController {
@@ -38,11 +39,12 @@ final class CharacterController: UIViewController {
 
 extension CharacterController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return viewModel.characters.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCell.reuseID, for: indexPath) as! CharacterCell
+        
         return cell
     }
 }
@@ -59,5 +61,11 @@ extension CharacterController: CharacterControllerInterface {
         collectionView.showsVerticalScrollIndicator = false
         
         collectionView.pintoEdgeCustom(view: view)
+    }
+    
+    func reloadCollectionView() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
 }

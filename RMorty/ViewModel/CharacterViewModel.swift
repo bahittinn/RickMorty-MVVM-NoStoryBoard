@@ -10,17 +10,31 @@ import Foundation
 protocol CharacterViewModelInterface {
     var view: CharacterControllerInterface? { get set}
     func viewDidLoad()
+    func fetchCharacters()
 }
 
-struct CharacterViewModel {
+final class CharacterViewModel {
     weak var view: CharacterControllerInterface?
-    
-    var movies: [CharacterResult] = []
+
+    var characters: [CharacterResult] = []
+    private let service = CharacterService()
     
 }
 
 extension CharacterViewModel: CharacterViewModelInterface {
     func viewDidLoad() {
-        print("viewdidload")
+        view?.configureCollectionView()
+        fetchCharacters()
+    }
+    
+    func fetchCharacters() {
+        service.downloadCharacters(page: 1) { [weak self] returnedCharacters in
+            guard let self = self else { return }
+            guard let returnedCharacters = returnedCharacters else { return}
+            
+            self.characters.append(contentsOf: returnedCharacters)
+            
+            self.view?.reloadCollectionView()
+        }
     }
 }
