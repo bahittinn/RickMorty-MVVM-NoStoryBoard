@@ -28,6 +28,7 @@ extension CharacterViewModel: CharacterViewModelInterface {
     func viewDidLoad() {
         view?.configureUI()
         view?.configureCollectionView()
+        view?.configureSearchController()
         fetchCharacters()
     }
     

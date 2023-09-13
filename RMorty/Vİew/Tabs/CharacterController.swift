@@ -11,6 +11,7 @@ protocol CharacterControllerInterface: AnyObject {
     func configureUI()
     func configureCollectionView()
     func reloadCollectionView()
+    func configureSearchController()
 }
 
 final class CharacterController: UIViewController {
@@ -23,7 +24,7 @@ final class CharacterController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
         viewModel.view = self
         viewModel.viewDidLoad()
     }
@@ -53,6 +54,10 @@ extension CharacterController: UICollectionViewDelegate, UICollectionViewDataSou
     }
 }
 
+extension CharacterController: UISearchControllerDelegate, UISearchBarDelegate {
+    
+}
+
 extension CharacterController: CharacterControllerInterface {
     
     func configureUI() {
@@ -77,5 +82,15 @@ extension CharacterController: CharacterControllerInterface {
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
+    }
+    
+    func configureSearchController() {
+        
+        let searchContoller = UISearchController(searchResultsController: nil)
+        
+        searchContoller.delegate = self
+        searchContoller.searchBar.delegate = self
+        
+        self.navigationItem.searchController = searchContoller
     }
 }

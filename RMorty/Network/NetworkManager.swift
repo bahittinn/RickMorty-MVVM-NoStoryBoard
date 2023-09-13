@@ -20,7 +20,7 @@ class NetworkManager {
             }
             
             guard let data = data else { return }
-            print("DEBUG: data is \(data)")
+    
             completion(.success(data))
             
         }.resume()
