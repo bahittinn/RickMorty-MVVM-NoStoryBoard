@@ -22,9 +22,11 @@ final class CharacterController: UIViewController {
     
     var viewModel = CharacterViewModel()
     
+    var sText = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         viewModel.view = self
         viewModel.viewDidLoad()
     }
@@ -55,7 +57,15 @@ extension CharacterController: UICollectionViewDelegate, UICollectionViewDataSou
 }
 
 extension CharacterController: UISearchControllerDelegate, UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        sText = searchText
+    }
     
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if sText != "" {
+            viewModel.searchCharacters(searchText: sText)
+        }
+    }
 }
 
 extension CharacterController: CharacterControllerInterface {

@@ -23,6 +23,20 @@ final class CharacterService {
         }
     }
     
+    func downloadCharacters(searchText: String,completion: @escaping ([CharacterResult]?) -> ()) {
+        let url = "\(APIURL)/?name=\(searchText)"
+        NetworkManager.shared.download(url: URL(string: "\(APIURL)/?name=\(searchText)")!) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                completion(self.handleWithData(data))
+            case .failure(let error):
+                self.handleWithError(error)
+                break
+            }
+        }
+    }
+    
     func handleWithData(_ data: Data) -> [CharacterResult]? {
         do {
             let character = try JSONDecoder().decode(Character.self, from: data)

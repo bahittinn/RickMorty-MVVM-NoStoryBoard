@@ -43,4 +43,18 @@ extension CharacterViewModel: CharacterViewModelInterface {
             self.page += 1
         }
     }
+    
+    func searchCharacters(searchText: String) {
+
+        service.downloadCharacters(searchText: searchText) { [weak self] returnedCharacters in
+            guard let self = self else { return }
+            guard let returnedCharacters = returnedCharacters else { return}
+            
+            self.characters = []
+            self.characters.append(contentsOf: returnedCharacters)
+            
+            self.view?.reloadCollectionView()
+            //self.page += 1
+        }
+    }
 }
