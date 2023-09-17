@@ -54,6 +54,10 @@ extension CharacterController: UICollectionViewDelegate, UICollectionViewDataSou
             viewModel.fetchCharacters()
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
 }
 
 extension CharacterController: UISearchControllerDelegate, UISearchBarDelegate {
