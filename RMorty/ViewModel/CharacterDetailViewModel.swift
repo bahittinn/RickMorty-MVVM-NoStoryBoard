@@ -13,14 +13,15 @@ protocol CharacterDetailViewModelInterface: AnyObject {
 }
 
 final class CharacterDetailViewModel {
-   weak var view: CharacterDetailControllerInterface?
+    var characterResult: CharacterResult!
+    weak var view: CharacterDetailControllerInterface?
     
-    var characters: [CharacterResult] = []
+    
 }
 
 extension CharacterDetailViewModel: CharacterDetailViewModelInterface {
     func viewDidLoad() {
-        print("DEBUG:")
         view?.configureUI()
+        print("viewmodel characterresult is \(characterResult.image!)")
     }
 }

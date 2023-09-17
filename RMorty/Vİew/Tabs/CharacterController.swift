@@ -21,6 +21,7 @@ final class CharacterController: UIViewController {
     private var padding: CGFloat = 16
     
     var viewModel = CharacterViewModel()
+    let detailView = CharacterDetailController()
     
     var sText = ""
     
@@ -56,7 +57,8 @@ extension CharacterController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        detailView.viewModel.characterResult = viewModel.characters[indexPath.row]
+        navigationController?.pushViewController(detailView, animated: true)
     }
 }
 
@@ -107,4 +109,5 @@ extension CharacterController: CharacterControllerInterface {
         
         self.navigationItem.searchController = searchContoller
     }
+ 
 }
