@@ -36,6 +36,14 @@ class MainTabController: UITabBarController {
             nav.navigationBar.prefersLargeTitles = true
         }
         
+        let tabBarAppearance = UITabBarAppearance()
+                        tabBarAppearance.configureWithOpaqueBackground()
+                        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+                        // correct the transparency bug for Navigation bars
+                        let navigationBarAppearance = UINavigationBarAppearance()
+                        navigationBarAppearance.configureWithOpaqueBackground()
+                        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        
         setViewControllers([nav1, nav2, nav3 ,nav4], animated: true)
         
     }
