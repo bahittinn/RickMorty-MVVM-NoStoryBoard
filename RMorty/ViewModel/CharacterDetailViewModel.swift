@@ -22,6 +22,5 @@ final class CharacterDetailViewModel {
 extension CharacterDetailViewModel: CharacterDetailViewModelInterface {
     func viewDidLoad() {
         view?.configureUI()
-        print("viewmodel characterresult is \(characterResult.image!)")
     }
 }

@@ -30,6 +30,8 @@ final class CharacterController: UIViewController {
         
         viewModel.view = self
         viewModel.viewDidLoad()
+        
+        
     }
     
     

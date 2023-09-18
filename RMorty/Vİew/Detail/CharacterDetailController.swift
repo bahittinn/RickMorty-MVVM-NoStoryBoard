@@ -11,11 +11,13 @@ protocol CharacterDetailControllerInterface: AnyObject {
     func configureUI()
     func configureImageView()
     func configureTitleLabel()
+    func setVariables()
 }
 
 class CharacterDetailController: UIViewController {
     
     let viewModel = CharacterDetailViewModel()
+    
     
     let characterImageView: UIImageView = {
         let iv = UIImageView()
@@ -24,8 +26,7 @@ class CharacterDetailController: UIViewController {
     }()
     
     let characterTitleLabel: UILabel = {
-       let label = UILabel()
-        label.text = "deneme"
+        let label = UILabel()
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
@@ -42,6 +43,7 @@ extension CharacterDetailController: CharacterDetailControllerInterface {
         view.backgroundColor = .systemBackground
         configureImageView()
         configureTitleLabel()
+        setVariables()
     }
     func configureImageView() {
         view.addSubview(characterImageView)
@@ -59,8 +61,22 @@ extension CharacterDetailController: CharacterDetailControllerInterface {
         characterTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            characterTitleLabel.topAnchor.constraint(equalTo: characterImageView.bottomAnchor),
+            characterTitleLabel.topAnchor.constraint(equalTo: characterImageView.bottomAnchor,constant: 10),
             characterTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+    }
+    func setVariables() {
+        guard let url = URL(string: viewModel.characterResult.image!) else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, _ , error in
+            if error != nil {
+                print("DEBUG: error is \(error?.localizedDescription)")
+                return
+            }
+            DispatchQueue.main.async {
+                self.characterImageView.image = UIImage(data: data!)
+                self.characterTitleLabel.text = self.viewModel.characterResult.name
+            }
+        }.resume()
     }
 }
